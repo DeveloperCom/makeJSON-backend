@@ -1,8 +1,8 @@
+import 'dotenv/config'
 import express from 'express'
 import os from 'os'
 import cors from 'cors'
 import jsonDataRoutes from './routes/createJsonData.routes.js'
-
 const app = express()
 const PORT=process.env.PORT||3000
 

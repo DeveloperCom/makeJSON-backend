@@ -14,6 +14,11 @@ app.get("/",(req,res)=>{
 })
 
 app.use('/api/v1/data', jsonDataRoutes)
+app.use((err, req, res, next) => {
+  console.error('Server error:', err);
+  res.status(500).send('Something went wrong!');
+});
+
 app.use('/',(req,res)=>{
     res.status(400).json({sucess:false,error:404})
 })

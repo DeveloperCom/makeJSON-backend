@@ -1,6 +1,10 @@
 import fs from 'fs'
 import csv from 'csv-parser';
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 let cityandcontry = []
 let femaleFirstName = []
 let maleFirstName = []
@@ -15,7 +19,7 @@ let indexMobileNumber = 2775 - 2
 
 
 //reading and rewriting to array
-fs.createReadStream('./data/cityandcontry.csv')
+fs.createReadStream('./data/cityandcontry.csv', { root: __dirname })
     .pipe(csv())
     .on('data', (row) => {
         cityandcontry.push(row);
@@ -25,7 +29,7 @@ fs.createReadStream('./data/cityandcontry.csv')
     });
 
 
-fs.createReadStream('./data/female_first_name.csv')
+fs.createReadStream('./data/female_first_name.csv', { root: __dirname })
     .pipe(csv())
     .on('data', (row) => {
         femaleFirstName.push(row);
@@ -35,7 +39,7 @@ fs.createReadStream('./data/female_first_name.csv')
     });
 
 
-fs.createReadStream('./data/male_first_name.csv')
+fs.createReadStream('./data/male_first_name.csv', { root: __dirname })
     .pipe(csv())
     .on('data', (row) => {
         maleFirstName.push(row);
@@ -45,7 +49,7 @@ fs.createReadStream('./data/male_first_name.csv')
     });
 
 
-fs.createReadStream('./data/surname.csv')
+fs.createReadStream('./data/surname.csv', { root: __dirname })
     .pipe(csv())
     .on('data', (row) => {
         surname.push(row);
@@ -55,7 +59,7 @@ fs.createReadStream('./data/surname.csv')
     });
 
 
-fs.createReadStream('./data/mobile_number.csv')
+fs.createReadStream('./data/mobile_number.csv', { root: __dirname })
     .pipe(csv())
     .on('data', (row) => {
         mobileNumber.push(row);
